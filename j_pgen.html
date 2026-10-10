@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<!--
+    Application: Just Password Generator
+    Version: 0.3.2
+    Authors: Andrii Furs, Tymur Furs (https://yourwebsite.com)
+    License: MIT (https://opensource.org/license/mit)
+    Description: Cryptographically secure, zero-tracking offline password generator.
+-->
+
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="j_pgen.css">
+    <script src="j_pgen.js" defer></script>
+</head>
+<body>
+
+    <main class="app-container">
+        <h1 class="app-title">Just password generator</h1>
+
+        <section class="settings-grid">
+            <!-- Длина пароля -->
+            <div class="input-group">
+                <label for="password-length"> Password length (4-64)</label>
+                <input type="number" id="password-length" value="20" min="4" max="64">
+            </div>
+
+            <div class="checkbox-group">
+                <label class="custom-checkbox" style="margin-left: 20px;">
+                    <input type="checkbox" id="chk-uppercase" checked>
+                    <span class="checkmark"></span>
+                    Uppercase letters (A-Z)
+                </label>
+                <label class="custom-checkbox" style="margin-left: 20px; margin-top: 16px;">
+                    <input type="checkbox" id="chk-lowercase" checked>
+                    <span class="checkmark"></span>
+                    Lowercase letters (a-z)
+                </label>
+                <label class="custom-checkbox" style="margin-left: 20px; margin-top: 16px;">
+                    <input type="checkbox" id="chk-numbers" checked>
+                    <span class="checkmark"></span>
+                    Numbers (0-9)
+                </label>
+            </div>
+        </section>
+
+        <section class="special-chars-section" style="margin-top: -26px;">
+            <div class="input-group">
+                <label for="chars-preset"> Special characters preset</label>
+                <select id="chars-preset">
+                    <option value="standard">Standard: !@#$%&()_?,</option>
+                    <option value="strict">Without brackets and commas: !@#$_-</option>
+                    <option value="minimal">Minimum: !@*</option>
+                    <option value="custom">Custom:</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="special-chars"> Allowed special characters (leave blank to disable)</label>
+                <input type="text" id="special-chars" value="!@#$%&()_?,">
+            </div>
+        </section>
+
+        <button type="button" id="btn-generate" class="btn-main">Generate a password</button>
+
+        <section class="result-section">
+            <div class="result-container">
+                <input type="text" id="result-display" readonly placeholder="The password will go here...">
+                <button type="button" id="btn-copy">Copy</button>
+            </div>
+            <div id="copy-toast" class="toast-message">Copied</div>
+        </section>
+
+        <footer class="strength-footer">
+            <div class="strength-bar-wrapper">
+                <div id="strength-bar" class="strength-bar"></div>
+            </div>
+            <div class="footer-link-container">
+                <a href="https://yourwebsite.com" target="_blank" rel="noopener">yourwebsite.com</a>
+            </div>
+            
+        </footer>
+    </main>
+
+</body>
+</html>

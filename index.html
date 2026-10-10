@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Password Generator</title>
+    <link rel="stylesheet" href="landing_page.css">
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <!-- Широкий чорний банер на всю ширину екрана -->
+    <header class="full-width-banner">
+        <div class="banner-content">
+            <img src="j_pgen-192x192.png" alt="Just Password Logo" class="site-logo">
+            <h1 class="site-title">Just Password Generator</h1>
+            0.3.2
+        </div>
+    </header>
+
+    <!-- Основна частина сторінки, центрована, шириною 800px -->
+    <main class="main-container">
+
+        <!-- Секція з додатком (Генератор) -->
+        <section class="app-embed-section">
+            <!-- Вбудовуємо ваш файл j_pgen.html через iframe -->
+            <iframe src="j_pgen.html" class="generator-iframe" title="Just Password Generator Tool"></iframe>
+        </section>
+
+        <br>
+
+        <!-- Кнопка інсталяції додатка -->
+        <section class="install-section">
+            <button type="button" id="btn-install-pwa" class="btn-install" disabled style="opacity: 0.5; cursor: not-allowed;">Install App on Your Device</button>
+        </section>
+
+        <br>
+
+        <!-- Маркетинговий опис (той, що ми затвердили) -->
+        <article class="site-description">
+            <h2>About Just Password Generator</h2>
+            <p><strong>Just Password Generator</strong> is a next-generation security tool designed to generate highly secure, random passwords. Unlike outdated web generators that rely on predictable algorithms, this lightweight web application uses cutting-edge browser cryptography to ensure your data remains completely impenetrable.</p>
+
+            <h3>How It Works (Our Methodology)</h3>
+            <ul>
+                <li><strong>Cryptographically Secure Generation:</strong> Instead of using standard Math.random() functions, the app utilizes the native Web Crypto API (crypto.getRandomValues). This fetches true entropy directly from your operating system's kernel, making the character selection mathematically impossible to predict or replicate.</li>
+                <li><strong>Advanced Cryptographic Shuffling:</strong> To break any structural patterns or predictable character sequences, the generated password undergoes a heavy randomization process using a specialized Fisher-Yates Shuffle integrated with cryptographic integers.</li>
+                <li><strong>Tailored Character Pools:</strong> You can use optimized presets, completely block restricted symbols, or inject your own custom character set to meet the strict requirements of any platform.</li>
+            </ul>
+
+            <h3>Key Advantages</h3>
+            <ul>
+                <li><strong>Maximum Entropy & Security:</strong> Zero predictability. Your passwords are truly chaotic and bulletproof against brute-force attacks.</li>
+                <li><strong>100% Client-Side Privacy:</strong> The application does not send data to any server. All generation, shuffling, and processing happen locally inside your browser/device.</li>
+                <li><strong>Smart Reliability Indicator:</strong> A clean, color-transitioning strength bar measures password entropy instantly, visually guiding you from vulnerable to ultra-secure.</li>
+                <li><strong>PWA Ready (Mobile-First Design):</strong> Optimized specifically for smartphones. It feels like a native mobile app with a clean dark theme, no clutter, and absolutely zero distracting scrolling issues.</li>
+            </ul>
+            <h3>Compatibility</h3>
+            <p><strong>Just Password Generator</strong> is built using modern web standards. To ensure stable performance and maximum cryptographic security, please use up-to-date versions of the following systems:</p>
+            <ul>
+                <li><strong>Desktop & Laptop Browsers:</strong> Google Chrome, Apple Safari, Mozilla Firefox, or Microsoft Edge.</li>
+                <li><strong>Apple Devices (iPhone / iPad):</strong> Requires iOS 11.3 or later.</li>
+                <li><strong>Android Devices:</strong> Supported on any modern smartphone running Android 5.0 or newer.</li>
+            </ul>
+            <p style="margin-top: 24px; font-style: italic; color: #8fa0c4;">
+                <strong>Afterword:</strong><br>We just got tired of constantly making up endless, meaningless strings of characters for passwords...<br>We'll be glad if you find it useful too.<br><span style="font-size: 24px;">😉</span> Good luck!
+            </p>
+        </article>
+
+        <footer class="license-section">
+            <h3>MIT License</h3>
+            <div class="license-box">
+                <p>Copyright © 2026 Andrii Furs & Tymur Furs</p>
+                <br>
+                <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+                <br>
+                <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+                <br>
+                <p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+            </div>
+
+            <div class="bottom-year-footer">
+            <a href="https://opensource.org/license/mit" target="_blank">opensource.org</a>
+            <br><br><br>
+            <hr class="divider">
+            <br>
+            Copyright © 2026 Andrii Furs & Tymur Furs
+            </div>
+
+        </footer>
+
+    </main>
+
+    <!-- Install PWA -->
+
+    <script>
+        let deferredPrompt;
+        const installBtn = document.getElementById('btn-install-pwa');
+
+        // 1. Реєстрація Сервіс-Воркера
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                    .then(reg => console.log('Service Worker registered!'))
+                    .catch(err => console.error('Service Worker failed:', err));
+            });
+        }
+
+        // 2. Ловимо сигнал готовності до встановлення (працює ТІЛЬКИ на HTTPS / GitHub)
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            // ОЖИВЛЯЄМО КНОПКУ: знімаємо блоки, повертаємо колір і курсор
+            installBtn.removeAttribute('disabled');
+            installBtn.style.opacity = '1';
+            installBtn.style.cursor = 'pointer';
+        });
+
+        // 3. Натискання на кнопку
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return; // Якщо промпту немає, кнопка просто не спрацює
+
+            deferredPrompt.prompt();
+            const {
+                outcome
+            } = await deferredPrompt.userChoice;
+            console.log(`User choice: ${outcome}`);
+            deferredPrompt = null;
+        });
+
+        // 4. Ховаємо кнопку після успішного встановлення
+        window.addEventListener('appinstalled', () => {
+            console.log('App installed!');
+            installBtn.style.display = 'none';
+        });
+
+    </script>
+
+</body>
+
+</html>

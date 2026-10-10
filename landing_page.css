@@ -1,0 +1,167 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #0d1527;
+    color: #ffffff;
+    min-height: 100vh;
+    background-image: url(landing_back.webp);
+    background-position: 50% 50px;
+    background-repeat: no-repeat;
+    background-size: 1920px auto;
+}
+
+.full-width-banner {
+    width: 100%;
+    background-color: #000;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: auto;
+}
+
+.site-logo {
+    width: 128px;
+    height: 128px;
+    border-radius: 14px;
+    display: block;
+}
+
+.site-title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.app-embed-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.generator-iframe {
+    width: 100%;
+    max-width: 480px;
+    height: 720px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #1a233d;
+}
+
+.install-section {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-install {
+    background-color: #059669;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 1);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-install:hover {
+    transform: scale(1);
+}
+
+.btn-install:active {
+    transform: scale(.97);
+    background: #0b7c59;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.site-description h2 {
+    font-size: 24px; margin-bottom: 16px; color: #8fa0c4;
+}
+
+.site-description h3 {
+    font-size: 18px; margin: 24px 0 12px 0; color: #8fa0c4;
+}
+
+.site-description p {
+    font-size: 15px; line-height: 1.6; color: #e2e8f0; margin-bottom: 12px; text-align: justify;
+}
+
+.site-description ul {
+    padding-left: 20px; display: flex; flex-direction: column; gap: 10px; text-align: justify;
+}
+
+.site-description li {
+    font-size: 15px; line-height: 1.6; color: #e2e8f0; text-align: justify;
+}
+
+.site-description strong {
+    color: #ffffff; }
+
+.divider {
+    border: none;
+    border-top: 1px solid #2c3a59;
+}
+
+.license-section h3 { 
+    font-size: 18px; 
+    margin-bottom: 16px; 
+    color: #8fa0c4; 
+}
+
+.license-box {
+    background-color: #0a101d;
+    border: 1px solid #2c3a59;
+    border-radius: 6px;
+    padding: 32px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #8fa0c4;
+    width: 100%;
+}
+
+.bottom-year-footer {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: #536997;
+    padding: 40px 0 20px 0;
+    user-select: none;
+}
+
+a {
+    color: #059669;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
