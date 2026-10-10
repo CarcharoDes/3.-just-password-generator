@@ -9,12 +9,12 @@
   "theme-color": "#1a233d",
   "icons": [
     {
-      "src": "icons/j_pgen-192x192.png",
+      "src": "/3.-just-password-generator/j_pgen-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/j_pgen-512x512.png",
+      "src": "/3.-just-password-generator/j_pgen-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
