@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Password Generator</title>
     <link rel="stylesheet" href="j_pgen.css">
+    <link rel="manifest" href="manifest.json">
     <script src="j_pgen.js" defer></script>
 </head>
 <body>
@@ -84,6 +85,48 @@
             
         </footer>
     </main>
+
+    <!-- Install PWA -->
+
+    <script>
+        
+        let deferredPrompt;
+        const installBtn = document.getElementById('btn-install-pwa');
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/3.-just-password-generator/sw.js')
+                    .then(reg => console.log('Service Worker registered!'))
+                    .catch(err => console.error('Service Worker failed:', err));
+            });
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            installBtn.removeAttribute('disabled');
+            installBtn.style.opacity = '1';
+            installBtn.style.cursor = 'pointer';
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+            const {
+                outcome
+            } = await deferredPrompt.userChoice;
+            console.log(`User choice: ${outcome}`);
+            deferredPrompt = null;
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('App installed!');
+            installBtn.style.display = 'none';
+        });
+        
+    </script>
 
 </body>
 </html>
