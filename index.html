@@ -103,7 +103,7 @@
         // 1. Реєстрація Сервіс-Воркера
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
+                navigator.serviceWorker.register('/3.-just-password-generator/sw.js')
                     .then(reg => console.log('Service Worker registered!'))
                     .catch(err => console.error('Service Worker failed:', err));
             });
