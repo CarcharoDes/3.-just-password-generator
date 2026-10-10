@@ -4,7 +4,7 @@ We just got tired of constantly making up endless, meaningless strings of charac
 
 ## 🌐 Website & Download
 You can download the application and check all the details on our official webpage:
-👉 **[Visit Webpage & Download](PUT_YOUR_LANDING_PAGE_URL_HERE)**
+👉 **[Visit Webpage & Download](https://carcharodes.github.io/3.-just-password-generator/)**
 
 ---
 
@@ -17,3 +17,4 @@ You can download the application and check all the details on our official webpa
 This project is open-source and available under the MIT License. For more details, see the [LICENSE](./LICENSE) file.
 
 Copyright © 2026 Andrii Furs & Tymur Furs
+
