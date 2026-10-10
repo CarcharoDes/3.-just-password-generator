@@ -2,7 +2,7 @@
   "name": "Just Password Generator",
   "short_name": "Just Password",
   "description": "Cryptographically secure, zero-tracking offline password generator.",
-  "start_url": "j_pgen.html",
+  "start_url": "/3.-just-password-generator/j_pgen.html",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#1a233d",
