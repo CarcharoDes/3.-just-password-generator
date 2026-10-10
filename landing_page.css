@@ -35,8 +35,8 @@ body {
 
 .site-logo {
     width: 192px;
+    height: 192px;
     display: block;
-    margin-left: -20px;
 }
 
 .site-title {
