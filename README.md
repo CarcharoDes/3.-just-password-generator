@@ -14,7 +14,7 @@ You can download the application and check all the details on our official webpa
 * **Android Devices:** Supported on any modern smartphone running Android 5.0 or newer.
 
 ## 📄 License
-This project is open-source and available under the MIT License. For more details, see the [LICENSE](./LICENSE) file.
+This project is open-source and available under the MIT License. For more details, see the [LICENSE](LICENSE.txt) file.
 
 Copyright © 2026 Andrii Furs & Tymur Furs
 
