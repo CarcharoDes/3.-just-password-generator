@@ -94,52 +94,6 @@
 
     </main>
 
-    <!-- Install PWA -->
-
-    <script>
-        let deferredPrompt;
-        const installBtn = document.getElementById('btn-install-pwa');
-
-        // 1. Реєстрація Сервіс-Воркера
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/3.-just-password-generator/sw.js')
-                    .then(reg => console.log('Service Worker registered!'))
-                    .catch(err => console.error('Service Worker failed:', err));
-            });
-        }
-
-        // 2. Ловимо сигнал готовності до встановлення (працює ТІЛЬКИ на HTTPS / GitHub)
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-
-            // ОЖИВЛЯЄМО КНОПКУ: знімаємо блоки, повертаємо колір і курсор
-            installBtn.removeAttribute('disabled');
-            installBtn.style.opacity = '1';
-            installBtn.style.cursor = 'pointer';
-        });
-
-        // 3. Натискання на кнопку
-        installBtn.addEventListener('click', async () => {
-            if (!deferredPrompt) return; // Якщо промпту немає, кнопка просто не спрацює
-
-            deferredPrompt.prompt();
-            const {
-                outcome
-            } = await deferredPrompt.userChoice;
-            console.log(`User choice: ${outcome}`);
-            deferredPrompt = null;
-        });
-
-        // 4. Ховаємо кнопку після успішного встановлення
-        window.addEventListener('appinstalled', () => {
-            console.log('App installed!');
-            installBtn.style.display = 'none';
-        });
-
-    </script>
-
 </body>
 
 </html>
